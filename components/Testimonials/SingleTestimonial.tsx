@@ -19,7 +19,7 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
             </h3>
             <p className="text-sm text-body-color">
               via{" "}
-              <a href={link} target="_blank" className="text-primary hover:underline">
+              <a href={link} rel="noreferrer" target="_blank" className="text-primary hover:underline">
                 {source}
               </a>
             </p>

@@ -74,7 +74,7 @@ export const useBlogData = ({ showHighlighted = false }: TParams) => {
       .catch((error) => {
         console.error("Error fetching blog data:", error);
       });
-  }, []);
+  }, [showHighlighted]);
 
   return {
     blogData

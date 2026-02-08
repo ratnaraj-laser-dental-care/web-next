@@ -6,14 +6,14 @@ const AboutFacility = () => {
       <div className="container border-t border-body-color/[.15] dark:border-white/[.15]">
         <div className="mx-auto flex max-w-lg items-center justify-center my-10 md:my-16 lg:my-20">
           <Image
-            src="/images/logo/logo-2.svg"
+            src="/images/logo/new_logo_2.png"
             alt="logo"
             width={100}
             height={30}
             className="w-full dark:hidden"
           />
           <Image
-            src="/images/logo/logo.svg"
+            src="/images/logo/new_logo_1.png"
             alt="logo"
             width={140}
             height={30}

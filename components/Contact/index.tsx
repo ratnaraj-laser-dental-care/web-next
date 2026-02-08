@@ -1,6 +1,50 @@
+'use client'
 import NewsLatterBox from "./NewsLatterBox";
+import { useState } from 'react'
 
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('idle')
+    setErrorMsg('')
+    if (!name.trim() || !phone.trim()) {
+      setErrorMsg('Name and phone are required')
+      setStatus('error')
+      return
+    }
+    setLoading(true)
+    try {
+      const res = await fetch('/api/appendBooking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: phone.trim(),
+          note: message.trim(),
+          source: 'contact-form'
+        })
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data?.error || 'Failed')
+      setStatus('success')
+      setName('')
+      setPhone('')
+      setMessage('')
+    } catch (err: any) {
+      setErrorMsg(err?.message || 'Submission failed')
+      setStatus('error')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -18,7 +62,7 @@ const Contact = () => {
                 We are here to assist you. Please fill out the form below to get in
                 touch.
               </p>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="-mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -29,6 +73,10 @@ const Contact = () => {
                         Your Name
                       </label>
                       <input
+                        id="name"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         type="text"
                         placeholder="Enter your name"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
@@ -44,8 +92,12 @@ const Contact = () => {
                         Your WhatsApp Number
                       </label>
                       <input
-                        type="email"
-                        placeholder="Enter your number"
+                        id="phone"
+                        name="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        type="tel"
+                        placeholder="Enter your number (with country code)"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                       />
                     </div>
@@ -59,17 +111,30 @@ const Contact = () => {
                         Message (Optional)
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         rows={5}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                         placeholder="Enter your Message"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                       ></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className="shadow-submit dark:shadow-submit-dark rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
-                      Submit
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="shadow-submit dark:shadow-submit-dark rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90 disabled:opacity-60"
+                    >
+                      {loading ? 'Sending...' : 'Submit'}
                     </button>
+                    {status === 'success' && (
+                      <p className="mt-3 text-sm text-green-600">Thank you — we will contact you soon.</p>
+                    )}
+                    {status === 'error' && errorMsg && (
+                      <p className="mt-3 text-sm text-red-600">{errorMsg}</p>
+                    )}
                   </div>
                 </div>
               </form>

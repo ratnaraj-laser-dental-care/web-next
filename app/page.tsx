@@ -3,6 +3,7 @@ import AboutEquipments from "@/components/About/AboutEquipments";
 import AboutFacility from "@/components/About/AboutFacility";
 import Blog from "@/components/Blog";
 import ScrollUp from "@/components/Common/ScrollUp";
+import Comparison from "@/components/Comparison";
 import Contact from "@/components/Contact";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
@@ -29,6 +30,7 @@ export default function Home() {
       <AboutDoctor />
       <Testimonials />
       <Blog />
+      <Comparison />
       <Contact />
     </>
   );

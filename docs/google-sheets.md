@@ -34,3 +34,4 @@ Behavior:
 - Server uses a service account to call `spreadsheets.values.append`.
 - The endpoint retries transient errors (429 / 5xx) with exponential backoff.
 - If Sheets is not available, consider writing to a local DB or CSV fallback (not implemented here).
+- Testing

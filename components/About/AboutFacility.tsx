@@ -5,15 +5,15 @@ const AboutFacility = () => {
     <section>
       <div className="container border-t border-body-color/[.15] dark:border-white/[.15]">
         <div className="mx-auto flex max-w-lg items-center justify-center my-10 md:my-16 lg:my-20">
-          <Image
-            src="/images/logo/new_logo_2.png"
+          <img
+            src="/images/logo/Light_Logo.png"
             alt="logo"
             width={100}
             height={30}
             className="w-full dark:hidden"
           />
-          <Image
-            src="/images/logo/new_logo_1.png"
+          <img
+            src="/images/logo/Dark_Logo.png"
             alt="logo"
             width={140}
             height={30}
@@ -43,33 +43,15 @@ const AboutFacility = () => {
             >
               <div className="flex flex-wrap">
                 <p className="mb-3 text-base !leading-relaxed text-body-color md:text-lg">
-                  <b className="text-primary">Ratnaraj Laser Dental Care</b> is a highly advanced dental clinic
-                  located in <b className="text-primary">Kalyan West</b>. We are pioneers in laser dentistry,
-                  providing premium quality comprehensive dental care to restore
-                  smiles and ensure long-term oral health.
-                  {/* 
-We prioritize staying up-to-date with the latest advancements in dentistry to provide the highest standard of care.
-
-*/}
-                  {/* <b className="font-normal dark:text-white">Dr. Ashish</b>  earned his <b className="text-primary">BDS</b> from <b className="text-primary">S.M.B.T. Dental College
-                    & Hospital</b> in 2009 and has dedicated past <b className="text-primary">16 years</b>  as
-                    Senior Dental Surgeon at Ratnaraj Laser Dental Care in 
-                    <b className="text-primary"> Kalyan City.</b> */}
-                </p>
-                <p className="mb-3 text-base !leading-relaxed text-body-color md:text-lg">
-                  With a <b className="text-primary">focus</b> on scrupulous hygiene and a no-compromise
-                  approach, we offer <b className="text-primary">accurate advice</b> and perform only necessary
-                  procedures. We prioritize staying up-to-date with the latest
-                  advancements in dentistry to provide the <b className="text-primary">highest standard of
-                  care.</b>
+                  <b className="text-primary">Ratnaraj Laser Dental Care</b> is a state-of-the-art dental clinic in <b className="text-primary">Kalyan (West)</b> offering advanced, painless, and precision-driven dental care.
                 </p>
 
                 <p className="mb-3 text-base !leading-relaxed text-body-color md:text-lg">
-                  Alongside general dental services, we offer <b className="text-primary">specialized
-                  treatments</b> like single sitting root canals , Philips Zoom
-                  Teeth whitening, home visit dentures, digital smile designing,
-                  full mouth rehabilitation with implants, and sleep apnea
-                  treatment
+                  With a strong focus on <b className="text-primary">laser dentistry</b>, <b className="text-primary">dental implants</b>, <b className="text-primary">aesthetic dentistry</b>, and <b className="text-primary">comprehensive oral rehabilitation</b>, we combine modern technology with ethical, patient-centric treatment.
+                </p>
+
+                <p className="mb-3 text-base !leading-relaxed text-body-color md:text-lg">
+                  Every smile is treated with meticulous planning, minimally invasive techniques, and the highest standards of safety and hygiene. At <b className="text-primary">Ratnaraj Laser Dental Care</b>, dentistry goes beyond treatment — we deliver <b className="text-primary">comfort</b>, <b className="text-primary">confidence</b>, and <b className="text-primary">long-lasting results</b>.
                 </p>
               </div>
             </div>

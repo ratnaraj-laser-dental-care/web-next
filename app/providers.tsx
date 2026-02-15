@@ -7,7 +7,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
       <IconContext.Provider
-        value={{ color: "yellow", className: "global-class-name" }}
+        value={{ className: "global-icon-class" }}
       >
         {children}
       </IconContext.Provider>

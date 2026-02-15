@@ -60,7 +60,7 @@ const Header = () => {
               >
                 <Image
                   // src="/images/logo/logo-2.svg"
-                  src="/images/logo/new_logo_2.png"
+                  src="/images/logo/Light_Logo.png"
                   alt="logo"
                   width={250}
                   height={60}
@@ -68,7 +68,7 @@ const Header = () => {
                 />
                 <Image
                   // src="/images/logo/logo.svg"
-                  src="/images/logo/new_logo_1.png"
+                  src="/images/logo/Dark_Logo.png"
                   alt="logo"
                   width={250}
                   height={60}
@@ -164,7 +164,7 @@ const Header = () => {
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 
                 <Link
-                  href="/signup"
+                  href="/service/4"
                   className="ease-in-up shadow-btn hover:shadow-btn-hover hidden rounded-sm bg-primary px-4 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 md:block md:px-4 lg:px-6 xl:px-4"
                 >
                   Book Appointment

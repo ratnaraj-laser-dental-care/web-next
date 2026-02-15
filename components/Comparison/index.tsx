@@ -66,10 +66,7 @@ export default function Comparison({ showSectionTitle = true }) {
               <span className="text-green-500 font-bold text-xl">✓</span>
               <span>All safety and hygiene standards compliant</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-green-500 font-bold text-xl">✓</span>
-              <span>Tourism packages including accommodation</span>
-            </li>
+            
           </ul>
         </div>
       </div>

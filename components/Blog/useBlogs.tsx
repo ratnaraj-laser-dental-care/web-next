@@ -26,8 +26,8 @@ export const transformWPPostToWebsiteBlog: (wpPost: any) => Blog = (
     ),
     image: `/images/blog/dept-${(wpPost.ID % 8) + 1}.jpg`, // /images/blog/blog-01.jpg
     author: {
-      name: "Dr. Ashish Jain",
-      image: "/images/dr_ashish_1.png",
+      name: "Dr. Ashishh Jain",
+      image: "/images/dr_ashish_2_avatar.jpg",
       role: "Dental Specialist",
       designation: "BDS, MDS",
     },

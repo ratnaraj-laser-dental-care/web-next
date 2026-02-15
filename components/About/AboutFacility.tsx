@@ -5,14 +5,14 @@ const AboutFacility = () => {
     <section>
       <div className="container border-t border-body-color/[.15] dark:border-white/[.15]">
         <div className="mx-auto flex max-w-lg items-center justify-center my-10 md:my-16 lg:my-20">
-          <img
+          <Image
             src="/images/logo/Light_Logo.png"
             alt="logo"
             width={100}
             height={30}
             className="w-full dark:hidden"
           />
-          <img
+          <Image
             src="/images/logo/Dark_Logo.png"
             alt="logo"
             width={140}

@@ -191,7 +191,7 @@ const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
 
         {status === 'success' && (
           <div className="rounded-lg bg-green-100 p-4 text-green-700 dark:bg-green-900 dark:text-green-100">
-            Appointment request submitted successfully! We'll contact you soon to confirm.
+            Appointment request submitted successfully! We&apos;ll contact you soon to confirm.
           </div>
         )}
 

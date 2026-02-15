@@ -34,7 +34,7 @@ const ServiceDetail = ({ params }: { params: { id: string } }) => {
               Service Not Found
             </h2>
             <p className="mb-6 text-lg text-body-color">
-              We couldn't find the service you're looking for.
+              We couldn&apos;t find the service you&apos;re looking for.
             </p>
             <Link
               href="/"

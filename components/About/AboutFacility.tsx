@@ -29,7 +29,7 @@ const AboutFacility = () => {
               
 
               <Image
-                src="/images/about/facility.jpg"
+                src="/images/facility.png"
                 alt="about image"
                 fill
                 className="rounded-xl drop-shadow-three dark:drop-shadow-none"

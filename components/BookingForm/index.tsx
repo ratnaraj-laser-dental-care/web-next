@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 interface BookingFormProps {
   serviceName?: string;
@@ -8,42 +8,61 @@ interface BookingFormProps {
 
 const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
     // time: '',
-    notes: ''
+    notes: "",
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+
+    if (name === "date") {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const selectedDate = new Date(value);
+      selectedDate.setHours(0, 0, 0, 0);
+
+      if (selectedDate < today) {
+        // Optionally show an error or ignore the change
+        setErrorMsg("Please select today or a future date.");
+        setStatus("error");
+        return;
+      }
+    }
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('idle');
-    setErrorMsg('');
+    setStatus("idle");
+    setErrorMsg("");
 
     // Validation
     if (!formData.name.trim() || !formData.phone.trim()) {
-      setErrorMsg('Name and phone are required');
-      setStatus('error');
+      setErrorMsg("Name and phone are required");
+      setStatus("error");
       return;
     }
 
     setLoading(true);
     try {
-      const res = await fetch('/api/appendBooking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/appendBooking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name.trim(),
           phone: formData.phone.trim(),
@@ -52,25 +71,25 @@ const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
           // time: formData.time,
           service: serviceName,
           note: formData.notes.trim(),
-          source: 'service-booking'
-        })
+          source: "service-booking",
+        }),
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || 'Failed to book appointment');
+      if (!res.ok) throw new Error(data?.error || "Failed to book appointment");
 
-      setStatus('success');
+      setStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
         // time: '',
-        notes: ''
+        notes: "",
       });
     } catch (err: any) {
-      setErrorMsg(err?.message || 'Submission failed');
-      setStatus('error');
+      setErrorMsg(err?.message || "Submission failed");
+      setStatus("error");
     } finally {
       setLoading(false);
     }
@@ -140,6 +159,7 @@ const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
             name="date"
             value={formData.date}
             onChange={handleChange}
+            min={new Date().toISOString().split("T")[0]} // disables past dates
             className="w-full rounded border border-gray-300 bg-transparent px-4 py-3 text-black outline-none transition focus:border-primary dark:border-gray-600 dark:text-white"
           />
         </div>
@@ -183,15 +203,16 @@ const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
         </div>
 
         {/* Status Messages */}
-        {status === 'error' && (
+        {status === "error" && (
           <div className="rounded-lg bg-red-100 p-4 text-red-700 dark:bg-red-900 dark:text-red-100">
             {errorMsg}
           </div>
         )}
 
-        {status === 'success' && (
+        {status === "success" && (
           <div className="rounded-lg bg-green-100 p-4 text-green-700 dark:bg-green-900 dark:text-green-100">
-            Appointment request submitted successfully! We&apos;ll contact you soon to confirm.
+            Appointment request submitted successfully! We&apos;ll contact you
+            soon to confirm.
           </div>
         )}
 
@@ -201,7 +222,7 @@ const BookingForm = ({ serviceName = "Our Service" }: BookingFormProps) => {
           disabled={loading}
           className="w-full rounded bg-primary px-6 py-3 font-semibold text-white transition hover:bg-opacity-90 disabled:opacity-50"
         >
-          {loading ? 'Booking...' : 'Book Appointment'}
+          {loading ? "Booking..." : "Book Appointment"}
         </button>
       </form>
     </div>

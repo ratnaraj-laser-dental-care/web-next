@@ -55,7 +55,7 @@ export default function ComparisonTable({ treatments }: ComparisonTableProps) {
                 ${treatment.usCost.toLocaleString()}
               </td>
               <td className="border border-gray-300 px-4 py-3 text-center text-gray-800 dark:text-gray-100">
-                ₹{treatment.indiaCost.toLocaleString()}
+                ${treatment.indiaCost.toLocaleString()}
               </td>
               <td className="border border-gray-300 px-4 py-3 text-center font-semibold text-green-600 dark:text-green-400">
                 ${treatment.savings.toLocaleString()}
